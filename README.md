@@ -1,5 +1,3 @@
-# Coding-Practice
-
 <h1>Coding Practice<br>
 ===========================
 
