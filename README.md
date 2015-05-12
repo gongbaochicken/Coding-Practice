@@ -1,3 +1,5 @@
 <h1>Coding Practice<br>
 
-<p>This repository contains some of my solution to a few of interesting problems from Leetcode, Lintcode or Hackerrank.
+<p>This repository collects some of my solutions and comments to interesting problems from online judges(OJ), including Leetcode, Lintcode or Hackerrank. </p><br>
+###Languages
+The languages I use may contain C++, Java and Ruby.
