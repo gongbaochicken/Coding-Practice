@@ -68,7 +68,9 @@ public:
             dummy->next = head->next;
             head->next = next;
         }
-        return dummy->next;
+        ListNode* key = dummy->next;
+        delete dummy;
+        return key;
     }
 };
 
