@@ -15,6 +15,9 @@ Could you do it in O(n) time and O(1) space?
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+ //Solution: 
+ //Idea: reverse the second half of the list; Or reverse the whole list, and compare the first part with original one
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
