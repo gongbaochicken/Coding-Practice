@@ -8,7 +8,7 @@ I hope this repository can help me to persistantly sharpen basic coding skills, 
 
 If you get better solutions, you are welcomed to fork and contribute this repository. 
 
-BTW, welcome to visit my blog HappyIsotope: http://happyisotope.coding.io/.
+BTW, welcome to visit my blog HappyIsotope: http://zhuojia.coding.io. and my personal page:www.zhuojia7.com
 
 ###References
 
