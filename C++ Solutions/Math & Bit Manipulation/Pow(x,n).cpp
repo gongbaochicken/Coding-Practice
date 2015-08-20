@@ -5,17 +5,19 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        if (n>=0) return power(x, n);
-        else return 1.0/power(x,-n);
+        if(n >= 0) return power(x, n);
+        else return 1.0/power(x, -n);
     }
-    
+
+private:
     double power(double x, int n){
+        if(x == 0) return 0;
         if(n == 0) return 1;
-        double ans = power(x, n/2);
+        double temp = power(x, n/2);
         if(n%2 == 0){
-            return ans * ans;
+            return temp * temp;
         }else{
-            return ans * ans * x;
+            return temp * temp * x;
         }
     }
 };
