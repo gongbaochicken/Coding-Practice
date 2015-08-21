@@ -33,16 +33,20 @@ public:
 //Time: O(log n) Test: 8 ms
 
 //Core Idea: a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))
+//Usually, fabs() supports double/float whereas abs() supports int and long. 
+//More specificly, in C++, abs is overloaded so it can handle doubles as well, but in C, abs-> fabs-> double. 
 class Solution {
 public:
     int divide(int dividend, int divisor) {
-        if(divisor == 0) return INT_MAX;
         if(dividend == 0) return 0;
+        if(divisor == 0) return INT_MAX;
         long long x = (double) exp(log(fabs(dividend)) - log(fabs(divisor)));
-        if((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)){
+        //Deal with positive or negative
+        if((dividend > 0) ^ (divisor > 0)){
             x = -x;
         }
-        if(x > INT_MAX) {
+        //Deal with overflow
+        if(x > INT_MAX || x < INT_MIN) {
             x = INT_MAX;
         }
         return x;

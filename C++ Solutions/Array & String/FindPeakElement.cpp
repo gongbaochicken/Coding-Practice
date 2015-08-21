@@ -12,25 +12,19 @@ Note: Your solution should be in logarithmic complexity.
 class Solution {
 public:
     int findPeakElement(vector<int>& nums) {
-        return binarySearchHelper(nums, 0, nums.size()-1);
-    }
-    
-    int binarySearchHelper(vector<int>& nums, int begin, int end){
-        if(begin == end) return begin;
-        if(begin+1 == end) {
-            if(nums[begin] > nums[end]) return begin;
-            else return end;
-        }
-        //Since num[-1] = num[n] = -∞
-        //If num[i-1] < num[i] > num[i+1], then num[i] is peak
-        //If num[i-1] < num[i] < num[i+1], then num[i+1...n-1] must contains a peak
-        //If num[i-1] > num[i] > num[i+1], then num[0...i-1] must contains a peak
-        //If num[i-1] > num[i] < num[i+1], then both sides have peak (n is num.length).Doesn't matter, just choose any of the above 2 situation
-        while(begin < end){
-            int m = (begin + end) / 2;
-            if(nums[m] > nums[m-1] && nums[m] > nums[m+1]) return m;
-            if(nums[m] > nums[m-1] && nums[m] < nums[m+1]) return binarySearchHelper(nums, m+1, end);
-            else return binarySearchHelper(nums, begin, m-1);
+        if(nums.size() == 0) return 0;
+        if(nums.size() == 1) return 0;
+        int l = 0, r = nums.size() - 1;
+        if(nums[0] > nums[1]) return 0;
+        if(nums[r] > nums[r-1]) return r;
+        while(l <= r){
+            int mid = (l + r)/2;
+            if(nums[mid] > nums[mid - 1] && nums[mid] > nums[mid + 1]) return mid;
+            if(nums[mid] > nums[mid - 1]){
+                l = mid + 1;
+            }else{
+                r = mid - 1;
+            }
         }
     }
 };
