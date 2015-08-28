@@ -3,8 +3,6 @@
 // return true if any value appears at least twice in the array, and it should return false if 
 // every element is distinct.
 
-// Runtime: 108 ms
-
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -19,19 +17,19 @@ public:
         return false;
     }
 };
+// Runtime: 108 ms
 
-
-Runtime: 40 ms
 
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        if(nums.size() <= 1) return false;
-        // sort array
-        sort(begin(nums), end(nums));
-        for(int i = 0; i < nums.size(); i++){
-           if( nums[i] == nums[i+1]) return true;
+        if(nums.size() < 2) return false;
+        sort(nums.begin(), nums.end());
+        for(int i = 1; i <nums.size(); ++i){
+            if(nums[i-1] == nums[i]) return true;
         }
         return false;
     }
 };
+
+//O(NlgN)  Runtime: 40 ms

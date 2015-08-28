@@ -15,18 +15,18 @@ Given "paper", "title", return true.
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
+        if(s.size() != t.size()) return false;
         int a[256] = {0}, b[256] = {0};
-        int len = s.size();
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < s.size(); i++){
             if(a[s[i]] > 0 || b[t[i]] > 0){
-                if(a[s[i]] == b[t[i]]){ //means they appear at the same position at the 1st time 
+                if(a[s[i]] == b[t[i]]){
                     continue;
                 }else{
                     return false;
                 }
             }else{
-                a[s[i]]=i+1; //record the first time they show up
-                b[t[i]]=i+1; //+1 is the way to distinguish them from 0
+                a[s[i]] = i+1 ;
+                b[t[i]] = i+1;
             }
         }
         return true;
