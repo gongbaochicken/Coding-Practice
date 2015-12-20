@@ -3,6 +3,26 @@
 // return true if any value appears at least twice in the array, and it should return false if 
 // every element is distinct.
 
+
+//Using set
+//time: O(n), space: O(n)
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        set<int> s;
+        for(int i = 0; i < nums.size(); i++){
+            if(s.find(nums[i]) == s.end()){
+                s.insert(nums[i]);
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+};
+
+//Using hashmap
+//time: O(n), space: O(n)
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -17,9 +37,9 @@ public:
         return false;
     }
 };
-// Runtime: 108 ms
 
-
+//sort
+//time: O(nlgn), space: O(1)
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -31,5 +51,3 @@ public:
         return false;
     }
 };
-
-//O(NlgN)  Runtime: 40 ms

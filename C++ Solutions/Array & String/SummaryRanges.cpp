@@ -18,8 +18,8 @@ public:
         int pos = 0;
         while(pos < nums.size()){
             int val = nums[pos];
-            if(pos+1 < nums.size() && nums[pos] + 1== nums[pos+1]){
-                while(pos+1 < nums.size() && nums[pos] + 1== nums[pos+1]){
+            if(pos + 1 < nums.size() && nums[pos] + 1 == nums[pos + 1]){
+                while(pos+1 < nums.size() && nums[pos] + 1== nums[pos + 1]){
                     pos++;
                 }
                 result.push_back(to_string(val) + "->" + to_string(nums[pos]));
