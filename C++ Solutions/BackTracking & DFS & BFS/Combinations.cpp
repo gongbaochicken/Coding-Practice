@@ -19,22 +19,21 @@ If n = 4 and k = 2, a solution is:
 class Solution {
 public:
     vector<vector<int>> combine(int n, int k) {
-        vector<vector<int> > res;
-        if(n < k) return res;
-        vector<int> temp(0, k); //Temp combination
-        combineGenerator(res, temp, 0, 0, n, k);
-        return res;
+        vector<vector<int>> ans;
+        if(n < k) return ans;
+        vector<int> temp;
+        backTracking(ans, temp, 0, n, k);
+        return ans;
     }
     
-    //num is the number in the temp vector
-    void combineGenerator(vector<vector<int> > &res,vector<int> &temp,int start,int num,int n ,int k){
-        if(num == k){ //Satisfy the requirement
-            res.push_back(temp);
+    void backTracking(vector<vector<int>>& ans, vector<int>& temp, int start, int n, int k){
+        if(temp.size() == k){
+            ans.push_back(temp);
             return;
         }
         for(int i = start; i < n; i++){
             temp.push_back(i+1);
-            combineGenerator(res, temp, i + 1, num + 1, n, k);
+            backTracking(ans, temp, i+1, n, k);
             temp.pop_back();
         }
     }

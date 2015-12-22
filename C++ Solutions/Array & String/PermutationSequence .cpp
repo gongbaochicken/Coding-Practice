@@ -177,27 +177,34 @@ class Solution {
 //More elegant way:
 
 class Solution {
+
 public:
     string getPermutation(int n, int k) {
-        int i,j,f = 1;
-        // left part of s is partially formed permutation, right part is the leftover chars.
-        string s(n,'0');
-        for(i = 1; i <= n; i++){
-            f *= i;//f = n*(n-1)*(n-2)*...*1 = n!
-            s[i-1] += i; //s=1234...n
-        }
-        
-        for(i = 0, k--; i < n; i++){
-            f /= n-i;
-            j = i + k/f; // calculate index of char to put at s[i]
-            char c = s[j]; 
-            // remove c by shifting to cover up (adjust the right part).
-            for(; j > i; j--)
-                s[j] = s[j-1];
-            k %= f;
-            s[i] = c;
-        }
-        return s;
+            k = k-1;
+            string s;
+            int fact = 1;
+            if(n == 1) return "1";
+            for(int i = 0; i < n; ++i){
+                fact *= i+1;
+                s.push_back('1'+i);
+            }
+            
+            for(int i = 0; i < n-1; i++){
+                fact = fact/(n-i);
+                int remLength = n-1-i; //always at least 1
+                int pos = k/fact;
+                //s[i+pos] is the value we want s[i] to have;
+                //s[i+1] should be what s[i] was, the remaining part should keep ordering
+                //Put s[i+pos] in front of original s[i]
+                if(pos!=0){
+                    char tmp = s[i];
+                    s[i] = s[i + pos];
+                    s.erase(s.begin() + i + pos);
+                    s.insert(s.begin() + i + 1, tmp);
+                }
+                k %= fact;
+            }
+            return s;
     }
 };
 

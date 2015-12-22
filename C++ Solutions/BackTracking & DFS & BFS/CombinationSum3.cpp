@@ -14,27 +14,30 @@ Example 2:
 Input: k = 3, n = 9
 Output: [[1,2,6], [1,3,5], [2,3,4]]
 */
+
+//Solution: Backtracking
 class Solution {
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
-        std::vector<std::vector<int> > res;
-        std::vector<int> combination;
-        combinationGene(n, res, combination, 1, k);
-        return res;
+        vector<vector<int>> ans;
+        if(k == 0) return ans;
+        vector<int> curr;
+        bs(ans, curr, 1, k, n);
+        return ans;
     }
-private:
-    void combinationGene(int target, std::vector<std::vector<int> > &res, std::vector<int> &combination, int begin, int need) {
-        if (target == 0) {
-            res.push_back(combination);
+    
+    void bs(vector<vector<int>>& ans, vector<int>& curr, int start, int k, int target){
+        if(target == 0 && k == 0){
+            ans.push_back(curr);
             return;
         }
-        if(need == 0){
+        if(target < 0){
             return;
         }
-        for (int i = begin; i < 10 && target >= i*need + need*(need-1)/2; ++i){
-                combination.push_back(i);
-                combinationGene(target-i, res, combination, i+1, need-1);
-                combination.pop_back();
+        for(int i = start; i <= 9; i++){
+            curr.push_back(i);
+            bs(ans, curr, i+1, k-1, target-i);
+            curr.pop_back();
         }
     }
 };

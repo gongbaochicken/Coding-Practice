@@ -22,23 +22,24 @@ A solution set is:
 class Solution {
 public:
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
-        std::sort(candidates.begin(), candidates.end());
-        std::vector<std::vector<int> > res;
-        std::vector<int> combination;
-        combinationGene(candidates, target, res, combination, 0);
-        return res;
+         vector<vector<int>> ans;
+         if(candidates.size() == 0) return ans;
+         sort(candidates.begin(), candidates.end());
+         vector<int> curr;
+         backTracking(candidates, target, curr, 0, ans);
+         return ans;
     }
-private:
-    void combinationGene(std::vector<int> &candidates, int target, std::vector<std::vector<int> > &res, std::vector<int> &combination, int begin) {
-        if  (!target) {
-            res.push_back(combination);
+    
+    void backTracking(vector<int>& candidates, int target, vector<int> curr, int start, vector<vector<int>>& ans){
+        if(target == 0){
+            ans.push_back(curr);
             return;
         }
-        for (int i = begin; i != candidates.size() && target >= candidates[i]; ++i){
-            if (i == begin || candidates[i] != candidates[i - 1]) {//Why we sort before
-                combination.push_back(candidates[i]);
-                combinationGene(candidates, target - candidates[i], res, combination, i + 1);
-                combination.pop_back();
+        for(int i = start; target >= candidates[i] && i < candidates.size(); i++){
+            if(i == start || candidates[i] != candidates[i-1]){
+                curr.push_back(candidates[i]);
+                backTracking(candidates, target-candidates[i], curr, i+1, ans);
+                curr.pop_back();
             }
         }
     }
