@@ -15,6 +15,35 @@ Example: 19 is a happy number
 12 + 0^2 + 0^2 = 1
 */
 
+//MySolution
+class Solution {
+private:
+    int squaremap[10] = {0, 1, 4, 9, 16, 25, 36, 49, 64, 81};
+public:
+    bool isHappy(int n) {
+        set<int> visited;
+        while(visited.find(n) == visited.end()){
+            visited.insert(n);
+            n = sum(n);
+            if(n == 1) return true;
+        }
+        return false;
+    }
+    
+    
+    int sum(int n){
+        int ans = 0;
+        while(n){
+            int bit = n%10;
+            ans += squaremap[bit];
+            n /= 10;
+        }
+        return ans;
+    }
+};
+
+
+
 class Solution {
 public:
     //Trick 1: map for small scale exponential operations
