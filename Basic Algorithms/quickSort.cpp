@@ -1,6 +1,9 @@
 //  QuickSort
 //  Created by Jason Zhuo Jia on 7/27/15.
 //
+//Average Time Cost: T(N) = T(N/2)+O(N)===> T(N) = O(NlogN)
+//Worst: T(n) = T(n - 1) + O(n), T(n) = O(n^2).
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <vector>
@@ -15,6 +18,7 @@ int partition(vector<int>& nums, int front, int end){
         while(nums[end] > pivot){
             end--;
         }
+        if(front >= end) break;
         swap(nums[front], nums[end]);
     }
     return front;

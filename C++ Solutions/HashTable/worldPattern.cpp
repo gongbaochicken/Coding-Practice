@@ -15,29 +15,41 @@ Given a pattern and a string str, find if str follows the same pattern.
 
 class Solution {
 public:
-
-  bool wordPattern(string pattern, string str) {
-    if(str.size() == 0 || pattern.size() == 0) return false;
-    istringstream iss(str);
-    string s;
-    vector<string> vs;
-    while(iss >> s){vs.push_back(s);}
-    if (pattern.size() != vs.size()) return false;
-    unordered_map<char, string> p2w;
-    unordered_map<string, char> w2p;
-    for(int i = 0; i < pattern.size(); i++){
-      if(p2w.find(pattern[i]) != p2w.end()) {
-	if(p2w[pattern[i]] != vs[i]){
-	  return false;
-	}
-      }else{
-	if(w2p.find(vs[i]) != w2p.end()){
-	  return false;
-	}
-	w2p[vs[i]] = pattern[i];
-	p2w[pattern[i]] = vs[i];
-      }
+    bool wordPattern(string pattern, string str) {
+        vector<string> sV;
+        unordered_map<char, string> mp;
+        set<string> stringSet; 
+        istringstream s(str);
+        string word;
+        while(s >> word){
+            sV.push_back(word);
+        }
+        if(pattern.size() != sV.size()) return false;
+        for(int i = 0; i < pattern.size(); i++){
+            char c = pattern[i];
+            if(mp.find(c) == mp.end()){
+                if(stringSet.find(sV[i]) != stringSet.end()) return false;
+                stringSet.insert(sV[i]);
+                mp[c] = sV[i];
+            }else{
+                if(mp[c] != sV[i]) return false;
+            }
+        }
+        return true;
     }
-    return true;
-  }
 };
+
+
+//Online Reference:
+bool wordPattern(string pattern, string str) {
+    map<char, int> p2i;
+    map<string, int> w2i;
+    istringstream in(str);
+    int i = 0, n = pattern.size();
+    for (string word; in >> word; ++i) {
+        if (i == n || p2i[pattern[i]] != w2i[word])
+            return false;
+        p2i[pattern[i]] = w2i[word] = i + 1;
+    }
+    return i == n;
+}

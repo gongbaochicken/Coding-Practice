@@ -35,3 +35,38 @@ public:
         }
     }
 };
+
+//vector version:
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size(), n = nums2.size();
+        if((m+n)%2 == 0) {
+            return (getMed(nums1, m, nums2, n, (m+n)/2) + getMed(nums1, m, nums2, n, (m+n)/2+1))/2.0;
+        }else{
+            return getMed(nums1, m, nums2, n, (m+n)/2+1);
+        }
+    }
+    
+    int getMed(vector<int>& nums1, int m, vector<int>& nums2, int n, int k){
+        if(m <= 0) return nums2[k-1];
+        if(n <= 0) return nums1[k-1];
+        if(k <= 1) return min(nums1[0], nums2[0]);
+        
+        if ((m/2 + n/2 + 1) >= k) {
+            if(nums1[m/2] > nums2[n/2]){
+                return getMed(nums1, m/2, nums2, n, k);
+            }else{
+                return getMed(nums1, m, nums2, n/2, k);
+            }
+        }else{
+            if(nums1[m/2] > nums2[n/2]){
+                vector<int> v(nums2.begin()+n/2+1, nums2.end());
+                return getMed(nums1, m, v, n-(n/2+1), k-(n/2+1));
+            }else{
+                vector<int> v(nums1.begin()+m/2+1, nums1.end());
+                return getMed(v, m-(m/2+1), nums2, n, k-(m/2+1));
+            }
+        }
+    }
+};
