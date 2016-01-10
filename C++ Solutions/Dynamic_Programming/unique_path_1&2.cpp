@@ -14,17 +14,32 @@ Key: mat[i][j]=mat[i-1][j]+mat[i][j-1]
 
 class Solution {
 public:
+    //Time: O(mn), Space: O(mn)
     int uniquePaths(int m, int n) {
-        //int mat[100][100];
-        vector<vector<int> > mat(m,vector<int>(n));
-        for(int i=0;i<m;i++) {mat[i][0]=1;}
-        for(int j=0;j<n;j++) {mat[0][j]=1;}
-        for(int i=1;i<m;i++){
-            for(int j=1;j<n;j++){
-                mat[i][j]=mat[i-1][j]+mat[i][j-1];
+        vector<vector<int> > dp(m, vector<int>(n, 0));
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(i == 0 || j == 0){
+                    dp[i][j] = 1;
+                    continue;
+                }else{
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1];
+                }
             }
         }
-        return mat[m-1][n-1];
+        return dp[m-1][n-1];
+    }
+    
+    //Time: O(mn), Space: O(m)
+    int uniquePaths(int m, int n) {
+        vector<int> dp(m, 0);
+        dp[0] = 1;
+        for(int i = 0; i < n; i++){
+            for(int j = 1; j < m; j++){
+                dp[j] = dp[j-1] + dp[j];
+            }
+        }
+        return dp[m-1];
     }
 };
 
