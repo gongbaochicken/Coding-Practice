@@ -14,7 +14,7 @@ window in S.
 */
 
 //Solution in C++:
-
+//O(N), where N is length of s
 class Solution {
 public:
     string minWindow(string s, string t) {
@@ -27,10 +27,9 @@ public:
         //2 pointers init
         int minLen = INT_MAX;  //for the convience of returning s.substr(left, minLen)
         int start = 0, left = 0, i = 0;
-        while(i <= s.size() && start < s.size()) {  //Make sure the iterator and startpoint don't exceed
+        while(i <= s.size() && start < s.size()) { //Otherwise when require == 0,跳过一步"a", "a" ====》""
             //if we still need letters from s
             if(required) {
-                if (i == s.size()) break; //Not found
                 table[s[i]]--;  //that charater in map - 1     
                 if(table[s[i]] >= 0)required--; //if it is >=0, it means we have reached one more step to the target, then required -1
                 i++;
@@ -40,7 +39,7 @@ public:
                     left = start;
                 }
                 table[s[start]]++; //start moves a step left
-                if (table[s[start]] > 0) required++;
+                if (table[s[start]] > 0) required++; //if(table[s[start]] <= 0), it means that it's not what we needs in the table;
                 start++;
             }
         }

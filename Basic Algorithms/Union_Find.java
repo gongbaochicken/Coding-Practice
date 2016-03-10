@@ -1,5 +1,5 @@
 public class Union_Find(){
-	int[] list;
+	int[] list;//Or use hashmap
 	public uion_find(int N){
 		list = new int[N];
 		for(int i = 0; i < N; i++){
