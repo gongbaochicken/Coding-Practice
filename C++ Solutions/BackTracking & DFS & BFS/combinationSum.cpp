@@ -16,23 +16,24 @@ A solution set is:
 class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-         vector<vector<int>> ans;
-         if(candidates.size() == 0) return ans;
-         sort(candidates.begin(), candidates.end());
-         vector<int> curr;
-         backTracking(candidates, target, curr, 0, ans);
-         return ans;
+        vector<vector<int> > ans;
+        vector<int> combination;
+        
+        if(candidates.size() == 0) return ans;
+        sort(candidates.begin(),candidates.end());
+        combinationGenerator(candidates, target, ans, combination, 0);
+        return ans;
     }
     
-    void backTracking(vector<int>& candidates, int target, vector<int> curr, int start, vector<vector<int>>& ans){
-        if(target == 0){
-            ans.push_back(curr);
+    void combinationGenerator(vector<int>& candidates, int target, vector<vector<int> >& ans, vector<int>& combination, int begin){
+        if (target == 0) {
+            ans.push_back(combination);
             return;
         }
-        for(int i = start; target >= candidates[i] && i < candidates.size(); i++){
-            curr.push_back(candidates[i]);
-            backTracking(candidates, target-candidates[i], curr, i, ans);
-            curr.pop_back();
+        for (int i = begin; candidates[i] <= target && i != candidates.size(); ++i) {
+            combination.push_back(candidates[i]);
+            combinationGenerator(candidates, target-candidates[i], ans, combination, i);
+            combination.pop_back();
         }
     }
 };
