@@ -1,5 +1,5 @@
 //Search for a Range
-//Tags: Binary Search 
+//Tags: Binary Search
 /*Given a sorted array of integers, find the starting and ending position of a given target value.
 
 Your algorithm's runtime complexity must be in the order of O(log n).
@@ -16,27 +16,25 @@ public:
     vector<int> searchRange(vector<int>& nums, int target) {
         vector<int> ans(2, -1);
         if(nums.size() == 0) return ans;
-        int index = binarySearch(nums, target);
-        if(index == -1) return ans;
+        int index = bsf(nums, target);
         int l = index, r = index;
-        while((l - 1) >= 0 && nums[l] == nums[l-1]) --l;
-        while((r + 1) < nums.size() && nums[r] == nums[r+1]) ++r;
+        while(l > 0 && nums[l-1] == nums[l]){l--;}
+        while(r < nums.size()-1 && nums[r] == nums[r+1]){r++;}
         ans[0] = l;
         ans[1] = r;
         return ans;
     }
-    
-private:
-    int binarySearch(vector<int>& nums, int target){
-        int left = 0, right = nums.size()-1;
-        while(left <= right){
-            int mid = (left + right)/2;
-            if(nums[mid] < target){
-                left = mid +1;
-            }else if(nums[mid] > target){
-                right = mid -1;
-            }else{
+
+    int bsf(vector<int>& nums, int target){
+        int l = 0, r = nums.size()-1;
+        while(l <= r){
+            int mid = l + (r-l)/2;
+            if(nums[mid] == target){
                 return mid;
+            }else if(nums[mid] > target){
+                r = mid-1;
+            }else{
+                l = mid+1;
             }
         }
         return -1;
