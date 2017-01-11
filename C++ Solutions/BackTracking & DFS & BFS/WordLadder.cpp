@@ -25,20 +25,24 @@ Note:
 
 //Solution in C++:
 /*
- Since only one letter can be changed at a time, if we start from "hit", we can only change to those words which have only one different letter from it, like "hot". Putting in graph-theoretic terms, we can say that "hot" is a neighbor of "hit".
- 
- The idea is simpy to begin from start, then visit its neighbors, then the non-visited neighbors of its neighbors... Well, this is just the typical BFS structure.
- 
- To simplify the problem, we insert end into dict. Once we meet end during the BFS, we know we have found the answer. We maintain a variable dist for the current distance of the transformation and update it by dist++ after we finish a round of BFS search (note that it should fit the definition of the distance in the problem statement). Also, to avoid visiting a word for more than once, we erase it from dict once it is visited.
+ Since only one letter can be changed at a time, if we start from "hit", we can only change to those words which have only one different letter
+ from it, like "hot". Putting in graph-theoretic terms, we can say that "hot" is a neighbor of "hit".
+
+ The idea is simpy to begin from start, then visit its neighbors, then the non-visited neighbors of its neighbors... Well, this is just the
+ typical BFS structure.
+
+ To simplify the problem, we insert end into dict. Once we meet end during the BFS, we know we have found the answer. We maintain a variable dist
+ for the current distance of the transformation and update it by dist++ after we finish a round of BFS search (note that it should fit the definition
+  of the distance in the problem statement). Also, to avoid visiting a word for more than once, we erase it from dict once it is visited.
 */
 class Solution {
 public:
-    int ladderLength(string beginWord, string endWord, unordered_set<string>& wordDict) {
-       wordDict.insert(endWord);
+    int ladderLength(string beginWord, string endWord, unordered_set<string>& wordList) {
+        wordList.insert(endWord);
         queue<string> toVisit;
-        addNextWords(beginWord, wordDict, toVisit);
+        findNeighbor(beginWord, wordList, toVisit);
         int dist = 2;
-        while(!toVisit.empty()){
+        while(toVisit.size() != 0){
             int len = toVisit.size();
             for(int i = 0; i < len; i++){
                 string word = toVisit.front();
@@ -46,27 +50,26 @@ public:
                 if(word == endWord){
                     return dist;
                 }else{
-                    addNextWords(word, wordDict, toVisit);
+                    findNeighbor(word, wordList, toVisit);
                 }
             }
             dist++;
         }
         return 0;
     }
-    
-private:
-    void addNextWords(string word, unordered_set<string>& wordDict, queue<string>& toVisit) {
-        wordDict.erase(word);
-        for(int i = 0; i < word.length(); i++){
+
+    void findNeighbor(string& word, unordered_set<string>& wordList, queue<string>& toVisit){
+        wordList.erase(word);
+        for(int i = 0; i < word.size(); ++i){
             char letter = word[i];
-            for(int j = 0; j < 26; j++){
-                word[i] = 'a' + j;
-                if(wordDict.find(word) != wordDict.end()){
+            for(int j = 0; j < 26; ++j){
+                word[i] = (char) 'a' + j;
+                if(wordList.find(word) != wordList.end()){
                     toVisit.push(word);
-                    wordDict.erase(word);
+                    wordList.erase(word);
                 }
             }
             word[i] = letter;
         }
-    } 
+    }
 };

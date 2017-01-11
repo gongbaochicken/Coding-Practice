@@ -18,27 +18,28 @@ A solution set is:
 [1, 1, 6]
 */
 
-//Solution: 
+//Solution:
 class Solution {
 public:
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
-        std::sort(candidates.begin(), candidates.end());
-        std::vector<std::vector<int> > res;
-        std::vector<int> combination;
-        combinationGene(candidates, target, res, combination, 0);
-        return res;
+        vector<vector<int>> ans;
+        if(candidates.size() == 0) return ans;
+        vector<int> curr;
+        sort(candidates.begin(), candidates.end());
+        backTracking(candidates, curr, ans, target, 0);
+        return ans;
     }
-private:
-    void combinationGene(std::vector<int> &candidates, int target, std::vector<std::vector<int> > &res, std::vector<int> &combination, int begin) {
-        if  (!target) {
-            res.push_back(combination);
+
+    void backTracking(vector<int>& candidates, vector<int>& curr, vector<vector<int>>& ans, int target, int begin){
+        if(target == 0){
+            ans.push_back(curr);
             return;
         }
-        for (int i = begin; i != candidates.size() && target >= candidates[i]; ++i){
-            if (i == begin || candidates[i] != candidates[i - 1]) {//Why we sort before
-                combination.push_back(candidates[i]);
-                combinationGene(candidates, target - candidates[i], res, combination, i + 1);
-                combination.pop_back();
+        for(int i = begin; candidates[i] <= target && i < candidates.size(); ++i){
+            if(i == begin || candidates[i-1] != candidates[i]){
+                curr.push_back(candidates[i]);
+                backTracking(candidates, curr, ans, target-candidates[i], i+1);
+                curr.pop_back();
             }
         }
     }
