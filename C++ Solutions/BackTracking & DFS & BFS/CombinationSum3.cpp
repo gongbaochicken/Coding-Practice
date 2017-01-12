@@ -1,7 +1,7 @@
-//Combination Sum III 
+//Combination Sum III
 //Tags: Backtracking
 /*
-Find all possible combinations of k numbers that add up to a number n, given that 
+Find all possible combinations of k numbers that add up to a number n, given that
 only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
 
 Ensure that numbers within the set are sorted in ascending order.
@@ -17,24 +17,22 @@ Output: [[1,2,6], [1,3,5], [2,3,4]]
 class Solution {
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
-        std::vector<std::vector<int> > res;
-        std::vector<int> combination;
-        combinationGene(n, res, combination, 1, k);
-        return res;
+        vector<vector<int>> ans;
+        vector<int> curr;
+        backTracking(ans, curr, n, 1, k, k);
+        return ans;
     }
-private:
-    void combinationGene(int target, std::vector<std::vector<int> > &res, std::vector<int> &combination, int begin, int need) {
-        if (target == 0) {
-            res.push_back(combination);
+
+    void backTracking(vector<vector<int>>& ans, vector<int>& curr, int n, int begin, int need, int size){
+        if(n == 0 && curr.size() == size){
+            ans.push_back(curr);
             return;
         }
-        if(need == 0){
-            return;
-        }
-        for (int i = begin; i < 10 && target >= i*need + need*(need-1)/2; ++i){
-                combination.push_back(i);
-                combinationGene(target-i, res, combination, i+1, need-1);
-                combination.pop_back();
+        if(need == 0 || curr.size() > size) return;
+        for(int i = begin; i < 10; ++i){
+            curr.push_back(i);
+            backTracking(ans, curr, n - i, i + 1, need-1, size);
+            curr.pop_back();
         }
     }
 };
