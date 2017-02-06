@@ -7,8 +7,6 @@ For example, given array S = {-1 2 1 -4}, and target = 1.
 The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 */
 
-
-
 class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {
@@ -16,8 +14,8 @@ public:
         if(nums.size() < 3) return closest;
         sort(nums.begin(), nums.end());
         closest = INT_MAX/2; //Otherwise (closest-target) will overflow
-        for(int i = 0; i < nums.size(); i++){
-            while(i > 0 && nums[i-1] == nums[i]) i++; //skip
+        for(int i = 0; i < nums.size()-2; ++i){
+            while(i > 0 && i < nums.size()-2 && nums[i] == nums[i-1]) i++; //skip
             int j = i+1, k = nums.size()-1;
             while(j < k){
                 int sum = nums[i] + nums[j] + nums[k];
@@ -33,4 +31,4 @@ public:
         }
         return closest;
     }
-};    
+};
