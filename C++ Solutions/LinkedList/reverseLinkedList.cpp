@@ -11,8 +11,8 @@
 
  /*Recursion
 Origin: A->B->C->D->E, head:A next: B->C->D->E
-Then you don't need to care about other things, because you know 
-that the recursively return ListNode* rest must be: E->D->C->B, then 
+Then you don't need to care about other things, because you know
+that the recursively return ListNode* rest must be: E->D->C->B, then
 the only thing you need to do is to link {rest}->A, which is E->D->C->B->A
 */
 class Solution {
@@ -33,7 +33,7 @@ public:
     }
 };
 /*However, this is too slow, costing 119ms...
-I made a little change to make it faster!!! I don't go through the 
+I made a little change to make it faster!!! I don't go through the
 whole list anymore, when I want to find the end of the "rest".
 I handle this before recusion. Now, the cost is only 9 ms.
 */
@@ -74,4 +74,17 @@ public:
     }
 };
 
-
+//Iteration: using alias name to declare those nodes:
+ListNode* reverseList(ListNode* head) {
+    if(head == nullptr || head->next == nullptr) return head;
+    ListNode* dummy = new ListNode(-1);
+    dummy->next = head;
+    while(head && head->next){
+        ListNode* swapNode = head->next;
+        ListNode* nextNode = head->next->next;
+        swapNode->next = dummy->next;
+        dummy->next = swapNode;
+        head->next = nextNode;
+    }
+    return dummy->next;
+}

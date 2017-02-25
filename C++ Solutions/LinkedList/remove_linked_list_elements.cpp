@@ -1,4 +1,4 @@
-// Remove Linked List Elements 
+// Remove Linked List Elements
 // Remove all elements from a linked list of integers that have value val.
 
 // Example
@@ -17,21 +17,24 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
-public:
-    ListNode* removeElements(ListNode* head, int val) {
-        while(head != NULL && head->val == val) {
-            head = head->next;
-        }
-        if (!head) { return NULL; }
-        ListNode * curr = head;
-        while(curr->next){
-            if(curr->next->val == val){
-                curr->next = curr->next->next;
-            }else{
-                curr = curr->next;
-            }
-        }
-        return head;
-    }
-};
+ class Solution {
+ public:
+     ListNode* removeElements(ListNode* head, int val) {
+         if(head == nullptr) return nullptr;
+         ListNode* dummy = new ListNode(-1);
+         dummy->next = head;
+         ListNode* back = dummy;
+         while(head){
+             if(head->val != val){
+                 head = head->next;
+                 back = back->next;
+             }else{
+                 ListNode* temp = head;
+                 head = head->next;
+                 back->next = back->next->next;
+                 delete temp;
+             }
+         }
+         return dummy->next;
+     }
+ };
