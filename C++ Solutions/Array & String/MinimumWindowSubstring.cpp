@@ -1,4 +1,4 @@
-//Minimum Window Substring
+//76. Minimum Window Substring
 //Tags: Hashtable, two pointers
 /*
  Given a string S and a string T, find the minimum window in S which will contain all the characters in
@@ -9,8 +9,8 @@ For example,S = "ADOBECODEBANC", T = "ABC"   Minimum window is "BANC".
 Note:
 If there is no such window in S that covers all characters in T, return the emtpy string "".
 
-If there are multiple such windows, you are guaranteed that there will always be only one unique minimum 
-window in S. 
+If there are multiple such windows, you are guaranteed that there will always be only one unique minimum
+window in S.
 */
 
 //Solution in C++:
@@ -30,7 +30,7 @@ public:
         while(i <= s.size() && start < s.size()) { //Otherwise when require == 0,跳过一步"a", "a" ====》""
             //if we still need letters from s
             if(required) {
-                table[s[i]]--;  //that charater in map - 1     
+                table[s[i]]--;  //that charater in map - 1
                 if(table[s[i]] >= 0)required--; //if it is >=0, it means we have reached one more step to the target, then required -1
                 i++;
             } else { //required = 0 means we have alread reach a possible substring, which still needs to be proven
