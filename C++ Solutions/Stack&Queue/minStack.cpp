@@ -13,15 +13,16 @@ class MinStack {
 public:
     stack<int> data;
     stack<int> min;
+
+    /** initialize your data structure here. */
+    MinStack() {
+
+    }
     
     void push(int x) {
         data.push(x);
-        if(min.empty()){
+        if(min.empty() || min.top() >= x){
             min.push(x);
-        }else{
-            if(x <= min.top()){
-                min.push(x);
-            }
         }
     }
 
