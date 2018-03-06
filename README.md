@@ -4,11 +4,11 @@ This github repository contains clean C++ & Java solutions for algorithm problem
 
 Also, inspired by "Talk is cheap. Show me the code", I believe that implementing these theoretical algorithms is an essential step to be a serious coder. Therefore, I may share some basic algorithm implementations, as implementing these theoretical algorithms is an essential step to be a serious coder.  I am a starter, but I am willing to make effort to be better.
 
-I hope this repository can help me to persistantly sharpen basic coding skills, and meanwhile I trully hope that it can help everyone who needs any inspiration about coding interview.  
+I hope this repository can help me to persistantly sharpen basic coding skills, and meanwhile I trully hope that it can help anyone who needs any inspiration about coding interview.  
 
 If you get better solutions, you are welcomed to fork and contribute this repository. 
 
-BTW, welcome to visit my blog HappyIsotope: http://zhuojia7.com/HappyIsotope. and my personal page:www.zhuojia7.com
+BTW, welcome to visit my new blog HappyIsotope: http://www.happyisotope.com and my personal portfolio page:www.zhuojia7.com .
 
 ### References
 
