@@ -10,7 +10,7 @@ If you get better solutions, you are welcomed to fork and contribute this reposi
 
 BTW, welcome to visit my blog HappyIsotope: http://zhuojia7.com/HappyIsotope. and my personal page:www.zhuojia7.com
 
-###References
+### References
 
 LeetCode Online Judge: https://leetcode.com/
 
