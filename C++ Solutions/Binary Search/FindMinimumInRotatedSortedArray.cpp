@@ -36,3 +36,22 @@ public:
         return nums[l];
     }
 };
+
+
+//Template:
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        if(nums.size() == 1) return nums[0];
+        int l = 0, r = nums.size() - 1;
+        while(l + 1< r){
+            int mid = l + (r-l)/2;
+            if(nums[mid] > nums[r]){
+                l = mid;
+            }else{
+                r = mid;
+            }
+        }
+        return nums[l] > nums[r]? nums[r]: nums[l];   
+    }
+};

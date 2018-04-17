@@ -14,12 +14,12 @@ class Solution {
 public:
     bool helper(TreeNode* root, TreeNode* left, TreeNode* right){
         //只是比较root level
-        if(root == NULL) return true;
-        if((left != NULL && root->val <= left->val) || (right != NULL && root->val >= right->val)) return false;
+        if(!root) return true;
+        if((left != nullptr && root->val <= left->val) || (right != nullptr && root->val >= right->val)) return false;
         return helper(root->left, left, root) && helper(root->right, root, right);
     }
     
     bool isValidBST(TreeNode* root) {
-        return helper(root, NULL, NULL);
+        return helper(root, nullptr, nullptr);
     }
 };

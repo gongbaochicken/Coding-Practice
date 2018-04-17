@@ -11,34 +11,43 @@ Given [5, 7, 7, 8, 8, 10] and target value 8,
 return [3, 4].
 */
 
+//Use Binary Search Twice
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int> ans(2, -1);
-        if(nums.size() == 0) return ans;
-        int index = bsf(nums, target);
-        int l = index, r = index;
-        while(l > 0 && nums[l-1] == nums[l]){l--;}
-        while(r < nums.size()-1 && nums[r] == nums[r+1]){r++;}
-        ans[0] = l;
-        ans[1] = r;
-        return ans;
-    }
+        if(nums.size() == 0) return {-1, -1};
+        int l = -1, r = -1;
+        int start = 0, end = nums.size()-1;
 
-    int bsf(vector<int>& nums, int target){
-        int l = 0, r = nums.size()-1;
-        while(l <= r){
-            int mid = l + (r-l)/2;
-            if(nums[mid] == target){
-                return mid;
-            }else if(nums[mid] > target){
-                r = mid-1;
-            }else{
-                l = mid+1;
-            }
+        //first pos
+        while(start+1 < end){
+            int mid = start + (end - start)/2;
+            if(nums[mid] >= target) end = mid;
+            else start = mid;
         }
-        return -1;
+        if(nums[start] == target){
+            l = start;
+        }else if(nums[end] == target){
+            l = end;
+        }else{
+            return {-1, -1};
+        }
+
+       //last pos
+        start = l, end = nums.size()-1;
+        while(start+1 < end){
+            int mid = start + (end - start)/2;
+            if(nums[mid] <= target) start = mid;
+            else end = mid;
+        }
+        if(nums[end] == target){
+            r = end;
+        }else if(nums[start] == target){
+            r = start;
+        }else{
+            return {-1, -1};
+        }
+        return {l, r};
     }
 };
-
 //Time: O(log n)

@@ -29,21 +29,22 @@ public:
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string> ans;
         if(!root) return ans;
-        helper(ans, root, to_string(root->val));
+        helper(root, to_string(root->val), ans);
         return ans;
     }
     
 private:
-    void helper(vector<string>& ans, TreeNode* root, string x){
+    void helper(TreeNode* root, string x, vector<string>& ans){
+        //Find leaf
         if(!root->left && !root->right){
             ans.push_back(x);
             return;
         }
         if(root->left){
-            helper(ans, root->left, x + "->" + to_string(root->left->val));
+            helper(root->left, x + "->" + to_string(root->left->val), ans);
         }
         if(root->right){
-            helper(ans, root->right, x + "->" + to_string(root->right->val));
+            helper(root->right, x + "->" + to_string(root->right->val), ans);
         }
     }
 };
