@@ -35,19 +35,19 @@ Note that 'A' and 'a' are treated as two different characters.
 class Solution {
 public:
     string frequencySort(string s) {
-        //Count Frequency
+        // Count frequency
         unordered_map<char, int> freq;
         for(auto c: s){
             freq[c]++;
         }
-        //Push to the bucket based on order.
-        //If we use 256, time out. 
+        // Push to the bucket based on order.
+        // If we use 256, time out. 
         vector<string> bucket(s.size() + 1, "");
         for(auto item: freq){
             string newStr(item.second, item.first);
             bucket[item.second].append(newStr);
         }
-        //Put result together
+        // Put result together
         string ans = "";
         for(int i = s.size(); i >= 0; i--){
             if(!bucket[i].empty()){

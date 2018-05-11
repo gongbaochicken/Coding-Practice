@@ -43,7 +43,7 @@ public:
 };
 
 
-//Preorder: Recursion
+// Preorder: Recursion
 class Solution {
 public:
     void recursion(Node* curr ,vector<int>& ans) {
@@ -91,7 +91,7 @@ public:
 };
 
 
-//level traversal
+// Level traversal
 class Solution {
 public:
     vector<vector<int>> levelOrder(Node* root) {

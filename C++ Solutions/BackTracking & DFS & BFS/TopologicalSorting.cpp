@@ -7,8 +7,7 @@ The first node in the order can be any node in the graph with no nodes direct to
 Find any topological order for the given graph.
 */
 
-//Solution:
-
+//Solution: BFS
 /**
  * Definition for Directed graph.
  * struct DirectedGraphNode {
@@ -19,10 +18,6 @@ Find any topological order for the given graph.
  */
 class Solution {
 public:
-    /**
-     * @param graph: A list of Directed graph node
-     * @return: Any topological order for the given graph.
-     */
     vector<DirectedGraphNode*> topSort(vector<DirectedGraphNode*> graph) {
         vector<DirectedGraphNode*> ans;
         if(graph.size() == 0) return ans;
@@ -49,7 +44,6 @@ public:
         
         //BFS, everytime minus 1 for someone recognize "current node" as a neighbor, when map[neibo]==0, 
         //it means all its parents has listes in the vector before it. So it is safe to push in the queue and ans;
-        
         while(!q.empty()){
             DirectedGraphNode* node = q.front();
             q.pop();
