@@ -1,6 +1,6 @@
-# :octocat: Coding Practice
+# :rocket: Coding Practice
 
-This github repository collects my C++ solutions for algorithm problems from LeetCode Online Judge, Lintcode Online Judge, and Hackerrank. Practice makes perfect. :rocket:
+This github repository collects my C++ solutions for algorithm problems from LeetCode Online Judge, Lintcode Online Judge, and Hackerrank. Practice makes perfect. :octocat:
 
 I also will continue adding more inforamtion about baisc knowledge of Linux popualr shell commands, database internal knowledge, etc.
 

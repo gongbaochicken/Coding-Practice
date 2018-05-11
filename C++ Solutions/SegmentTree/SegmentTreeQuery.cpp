@@ -1,4 +1,5 @@
 //Segment Tree Query
+//LintCode
 /*
 For an integer array (index from 0 to n-1, where n is the size of this array), in the corresponding SegmentTree, each node stores an extra attribute max to denote the maximum number in the interval of the array (index from start to end).
 

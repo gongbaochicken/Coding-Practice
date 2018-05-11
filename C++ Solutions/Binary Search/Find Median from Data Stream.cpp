@@ -21,6 +21,12 @@ add(3)
 findMedian() -> 2
 */
 
+// I use another description of the problem.
+// Your MedianFinder object will be instantiated and called as such:
+// MedianFinder mf;
+// mf.addNum(1);
+// mf.findMedian();
+
 class MedianFinder {
 private:
     priority_queue<int> maxHeap;
@@ -53,8 +59,3 @@ public:
         }
     }
 };
-
-// Your MedianFinder object will be instantiated and called as such:
-// MedianFinder mf;
-// mf.addNum(1);
-// mf.findMedian();

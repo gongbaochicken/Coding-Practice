@@ -1,4 +1,5 @@
 //Hash Function
+//LintCode
 
 class Solution {
 public:
@@ -20,3 +21,5 @@ public:
         return (int)hashSum;
     }
 };
+
+//33 is a magic number.

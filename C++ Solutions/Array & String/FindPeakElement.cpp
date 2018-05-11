@@ -1,4 +1,4 @@
-/*Find Peak Element*/
+//Find Peak Element
 
 /*
 A peak element is an element that is greater than its neighbors.
