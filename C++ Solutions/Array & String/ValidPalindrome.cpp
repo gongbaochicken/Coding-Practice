@@ -9,7 +9,8 @@
 // Have you consider that the string might be empty? This is a good question to ask during an interview.
 // For the purpose of this problem, we define empty string as valid palindrome.
 
-// My Solution:
+// My Solution: 2pointer
+//Time: O(N), Space: O(1)
 
 bool isPalindrome(string s) {
   int start = 0;

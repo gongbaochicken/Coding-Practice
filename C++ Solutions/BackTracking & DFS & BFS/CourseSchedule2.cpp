@@ -71,6 +71,3 @@ private:
         return degree;
     }
 };
-
-
-//Solution 2 in C++(DFS):
