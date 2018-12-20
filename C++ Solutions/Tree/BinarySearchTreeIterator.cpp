@@ -23,38 +23,40 @@ Note: next() and hasNext() should run in average O(1) time and uses O(h) memory,
  * };
  */
 class BSTIterator {
-private:
-    stack<TreeNode*> st;
 public:
     BSTIterator(TreeNode *root) {
-        save_left(root);
+    	TreeNode* p = root;
+        while(p){
+        	st.push(p);
+        	p = p->left;
+        }
     }
 
     /** @return whether we have a next smallest number */
     bool hasNext() {
-        if(st.empty()){
-            return false;
-        }
-        return true;
+        return !st.empty();
     }
 
     /** @return the next smallest number */
     int next() {
-        TreeNode *top = st.top();
-        st.pop();
-        //Track back, if there exists right children, then save them to the stack for later use.
-        if(top->right != NULL){
-            save_left(top->right);
+    	TreeNode* p = st.top();
+    	st.pop();
+        if(p->right){
+        	TreeNode* q = p->right;
+        	while(q){
+        		st.push(q);
+        		q = q->left;
+        	}
         }
-        return top->val;
+        return p->val;
     }
 
-    //Save the left(smaller) children in pre-order
-    void save_left(TreeNode *root){
-        TreeNode *p = root;
-        while(p != NULL){
-            st.push(p);
-            p = p->left;
-        }
-    }
+private:
+    stack<TreeNode*> st;
 };
+
+/**
+ * Your BSTIterator will be called like this:
+ * BSTIterator i = BSTIterator(root);
+ * while (i.hasNext()) cout << i.next();
+ */

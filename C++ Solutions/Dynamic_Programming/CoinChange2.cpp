@@ -21,7 +21,6 @@ Explanation: there are four ways to make up the amount:
 5=1+1+1+1+1
 
 Example 2:
-
 Input: amount = 3, coins = [2]
 Output: 0
 Explanation: the amount of 3 cannot be made up just with coins of 2.
@@ -79,16 +78,19 @@ public:
             map[i][0] = 1;
         }
         //top row
-    		for (int j = 1; coins[0] * j <= amount; j++) {
-    			map[0][coins[0] * j] = 1;
-    		}
+        for (int j = 1; coins[0] * j <= amount; j++) {
+            map[0][coins[0] * j] = 1;
+        }
         //Find the dependence nodes
-    		for(int i = 1; i < coins.size(); ++i){
-    		    for(int j = 1; j <= amount; j++){
-    		        map[i][j] = map[i-1][j];
-    		        map[i][j] += j - coins[i] >=0 ?map[i][j-coins[i]]:0;
-    		    }
-    		}
-    		return map[coins.size()-1][amount];
+		for(int i = 1; i < coins.size(); ++i){
+		    for(int j = 1; j <= amount; j++){
+                if (j - coins[i] >= 0) {
+                    map[i][j] = map[i-1][j] + (map[i][j-coins[i]]);
+                }else{
+                    map[i][j] = map[i-1][j];
+                }
+		    }
+		}
+        return map[coins.size()-1][amount];
     }
 };

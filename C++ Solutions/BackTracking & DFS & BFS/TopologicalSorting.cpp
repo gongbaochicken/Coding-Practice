@@ -24,7 +24,7 @@ public:
         queue<DirectedGraphNode*> q;
         unordered_map<DirectedGraphNode*, int> map;
 
-        //Find all nodes with no parents, and push them into queue and ans;
+        //Find all nodes with no parent, and push them into queue and ans;
         for(auto node: graph){
             for(auto neighbor: node->neighbors){
                 if(map.find(neighbor) != map.end()){

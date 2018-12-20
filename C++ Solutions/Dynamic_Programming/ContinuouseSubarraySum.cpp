@@ -50,25 +50,20 @@ class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
         if(nums.size() < 2) return false;
-        int m = nums.size();
-        vector<int> dp(m, 0);
-        for(int i = 0; i < m; ++i){
-        	dp[i] = nums[i];
-        }
+        vector<int> dp(nums);
         for(int i = nums.size()-1; i >= 0; i--){
         	for(int j = i-1; j >= 0; j--){
-            dp[i] += dp[j];
-            if(k == 0 && dp[i] == 0){
-              return true;
-            }else if(k != 0 && dp[i]%k == 0){
-              return true;
-            }
+                dp[i] += dp[j];
+                if(k == 0 && dp[i] == 0){
+                  return true;
+                }else if(k != 0 && dp[i]%k == 0){
+                  return true;
+                }
         	}
         }
         return false;
     }
 };
-
 //Math way:
 //We iterate through the input array exactly once, keeping track of the running sum mod k of the elements in the process. If we find that a running sum value at index j has been previously seen before in some earlier index i in the array, 
 //then we know that the sub-array (i,j] contains a desired sum.

@@ -15,7 +15,7 @@
 //
 // Therefore, return the max sliding window as [3,3,5,5,6,7].
 
-//Solution: Use dq to main a window, which should follow 2 rules.
+//Solution: Use deque to main a window, which should follow 2 rules.
 //rule 1: In the window, the elements are descending orders. The front
 //is the maximum element.
 //rule 2: The window contains index to avoid repeating issues.

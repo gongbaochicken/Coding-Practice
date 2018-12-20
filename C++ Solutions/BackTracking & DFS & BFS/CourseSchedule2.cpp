@@ -38,14 +38,14 @@ public:
             int x = zeroes.front();
             zeroes.pop();
             ans.push_back(x);
+            //Since you put one node into ans vector;
+            numCourses--;
             for(auto neighbor:graph[x]){
                 degree[neighbor]--;
                 if(degree[neighbor] == 0){
                     zeroes.push(neighbor);
                 }
             }
-            //Since you put one node into ans vector;
-            numCourses--;
         }
         //if numCourses is not 0, it means it has a directed circle!!!
         if(numCourses != 0) ans.clear();

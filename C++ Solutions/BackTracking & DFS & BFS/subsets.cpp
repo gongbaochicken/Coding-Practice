@@ -20,6 +20,7 @@ If nums = [1,2,3], a solution is:
 ]
 */
 
+//Time: O(N^2), Space:O(N)
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
