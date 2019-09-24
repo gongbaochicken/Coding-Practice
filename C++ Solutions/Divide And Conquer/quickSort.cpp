@@ -1,7 +1,7 @@
 //  QuickSort
 //  Created by Jason Zhuo Jia on 7/27/15.
 //
-//Average Time Cost: T(N) = T(N/2)+O(N)===> T(N) = O(NlogN)
+//Average Time Cost: T(N) = 2T(N/2)+O(N)===> T(N) = O(NlogN)
 //Worst Time: T(n) = T(n - 1) + O(n), T(n) = O(n^2).
 //Space: O(NlgN)
 //Unstable Sort

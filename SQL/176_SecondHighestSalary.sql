@@ -15,11 +15,9 @@ For example, given the above Employee table, the query should return 200 as the 
 | 200                 |
 +---------------------+
 
-
 # Write your MySQL query statement below
 SELECT MAX(Salary) SecondHighestSalary
 FROM Employee WHERE Salary NOT IN (SELECT MAX(Salary) FROM Employee);
-
 
 # More faster
 SELECT MAX(Salary) SecondHighestSalary

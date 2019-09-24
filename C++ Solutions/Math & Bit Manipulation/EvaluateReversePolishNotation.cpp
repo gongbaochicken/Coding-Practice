@@ -9,7 +9,8 @@ Some examples:
 
 
 ####My solution:
-I will choose stack to store the numbers, before they do arithmetic operations, and to store the temporary result. Once we find an arithmetic operator in the input vector, we pop out the top 2 numbers to do arithmetic operations. 
+I will choose stack to store the numbers, before they do arithmetic operations, and to store the temporary result. 
+Once we find an arithmetic operator in the input vector, we pop out the top 2 numbers to do arithmetic operations. 
 
 Traps: 
 1. Please pay attention to the order when we pop the top 2 numbers out.
@@ -19,50 +20,37 @@ Traps:
 */
 
 class Solution {
-	bool checkNum(string input){
+public:
+    bool checkNum(string input){
     	for(int i = 0; i < input.length(); i++){
        		if(isdigit(input[i])) return true;
        	}
        	return false;
    	}
-   	
-public:
-    int evalRPN(vector<string>& tokens) {
-        if(tokens.size() == 0) return 0;
-        int result = 0;
-        if(tokens.size() == 1){
-            result = stoi(tokens[0]);
-        }
-        stack<int> stk;
-        for(int i = 0; i < tokens.size(); i++){
-            if(checkNum(tokens[i])){
-                int k = stoi(tokens[i]);
-                stk.push(k);
-            }
-            else{
-                int b = stk.top();
-                stk.pop();
-                int a = stk.top();
-                stk.pop();
-                if (tokens[i] == "+"){
-                    result = a + b;
-                    stk.push(result);
-                }
-                else if(tokens[i] == "-"){
-                    result = a - b;
-                    stk.push(result);
-                }
-                else if(tokens[i] == "*"){
-                    result = a * b;
-                    stk.push(result);
-                }
-                else if(tokens[i] == "/"){
-                    result = a/b;
-                    stk.push(result);
-                }
-            }
-        }
-        return result;
-    }
     
+    int evalRPN(vector<string>& tokens) {
+        if (tokens.size() == 0) return 0;
+        int ans = stoi(tokens[0]); //case: ["18"]
+        stack<int> st;
+        for (int i = 0; i < tokens.size(); ++i) {
+            if(checkNum(tokens[i])){ // "-11"
+                int val = stoi(tokens[i]);
+                st.push(val);
+            } else {
+                int b = st.top(); st.pop();
+                int a = st.top(); st.pop();
+                if (tokens[i] == "+") {
+                    ans = a + b;
+                } else if (tokens[i] == "-") {
+                    ans = a - b;
+                } else if (tokens[i] == "*") {
+                    ans = a * b;
+                } else {
+                    ans = a / b;
+                }
+                st.push(ans);
+            }
+        }
+        return ans;
+    }
 };

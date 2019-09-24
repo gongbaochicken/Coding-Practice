@@ -37,6 +37,9 @@ public:
         return nums[l] > nums[r]? nums[r]: nums[l];   
     }
 };
+// Q1: Why l+1 < r? Avoid over edge when the search targe is not a particular value
+// we are looking for 2 cases to stop searching: a. nums[mid] > nums[mid + 1] b. nums[mid - 1] > nums[mid]
+// Q2: Can I use judge based on condition nums[mid] < nums[l]? No, we may also meet the sorted case: [1,2,3]  
 
 //Template:
 class Solution {

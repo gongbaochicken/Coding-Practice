@@ -16,7 +16,7 @@ A solution set is:
 
 //Solution: 2 pointers
 //Time: O(n^2)
-//Space: O(n^2)
+//Space: O(1)
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
