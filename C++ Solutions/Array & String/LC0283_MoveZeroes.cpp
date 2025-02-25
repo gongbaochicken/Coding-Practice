@@ -11,6 +11,8 @@ You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 */
 
+// stamp: *
+
 // Solution: Time: O(K), K is number of 0. Space: O(1)
 class Solution {
 public:

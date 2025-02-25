@@ -35,7 +35,7 @@ public:
     }
 };
 
-// real counting array
+// real counting array, using char count distribution to represent keys
 // Time: O(N * k)
 class Solution {
 public:
@@ -61,3 +61,5 @@ public:
         return res;
     }
 };
+
+// another idea: use  multimap<string, string>?
