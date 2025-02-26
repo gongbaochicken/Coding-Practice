@@ -51,7 +51,6 @@ public:
     }
 };
 
-
 // Other: smallest k elements of array
 int partition(vector<int>& v, int left, int right) {
     int pivot = v[left];
