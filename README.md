@@ -1,26 +1,21 @@
 # :rocket: Coding Practice
 
-This github repository collects my C++ solutions for algorithm problems from LeetCode Online Judge, Lintcode Online Judge, and Hackerrank. Practice makes perfect. :octocat:
+Welcome to my GitHub repository, where I collect my C++ solutions to algorithm problems sourced from LeetCode, Lintcode, and HackerRank. Remember, practice makes perfect! :octocat:
 
-I also will continue adding more inforamtion about baisc knowledge of Linux popualr shell commands, database internal knowledge, etc.
+## What You’ll Find Here
+In this repository, you will find:
 
-I hope this repository can help us to persistantly sharpen basic coding skills, and meanwhile I truely hope that it can help anyone who needs any inspiration about coding interview.
+- C++ solutions to various algorithm challenges.
+- Ongoing updates with information on basic knowledge of Linux shell commands, database concepts, and more.
 
-You are welcome to clone this repo to your local as a reference. If you get better solutions, you are welcomed to share with me. And don't forget to star. :stuck_out_tongue_winking_eye:
+## Goal
+My aim is to create a resource that not only sharpens our coding skills but also serves as inspiration for anyone preparing for coding interviews. If you like this repo, please consider giving a star to support this project. :stuck_out_tongue_winking_eye:
 
-
-BTW, welcome to visit my new blog HappyIsotope: http://www.happyisotope.com and my personal portfolio page:www.zhuojia7.com .
-
-### :dart: TODO
-Summary of web developoment, SQL, network.
-
-### :book: Reference
-
-LeetCode Online Judge: [https://leetcode.com](https://leetcode.com)
-
-Lintcode Online Training System: [http://www.lintcode.com/en/](http://www.lintcode.com/en/)
-
-Hankerrank: [https://www.hackerrank.com](https://www.hackerrank.com)
+### :book: Links
+- [Portfolio](https://gongbaochicken.github.io/)
+- LeetCode Online Judge: [https://leetcode.com](https://leetcode.com)
+- Lintcode Online Training System: [http://www.lintcode.com/en/](http://www.lintcode.com/en/)
+- Hankerrank: [https://www.hackerrank.com](https://www.hackerrank.com)
 
 Books:
 * Introduction to Algorithms (CLRS)
