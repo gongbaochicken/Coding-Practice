@@ -4,7 +4,8 @@
       "Bash(mkdir:*)",
       "Bash(python test_runner.py:*)",
       "Bash(python3:*)",
-      "Read(//Users/zhuojia/Desktop/github/Coding-Practice/**)"
+      "Read(//Users/zhuojia/Desktop/github/Coding-Practice/**)",
+      "Bash(make:*)"
     ],
     "deny": [],
     "ask": []

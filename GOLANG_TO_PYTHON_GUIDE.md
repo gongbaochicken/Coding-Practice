@@ -133,6 +133,10 @@ if key in my_dict:
 # Style 2: get() with default
 val = my_dict.get(key, default_value)
 
+# def lookup2(key: str):
+#   a = {"a":1, "b": 2, "c": 3}
+#   return a.get(key, -2)
+
 # Style 3: Try-except (not common in interviews)
 try:
     val = my_dict[key]
